@@ -1,59 +1,40 @@
-# IsiClientSide
+# isi-client-side
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+Angular web UI for browsing repositories pushed with the [`isi`](https://github.com/glrmrissi/isi) CLI. Connects to [`isi-object-storage`](https://github.com/glrmrissi/object_storage_isi) to list repositories, branches, and file trees — similar to how GitHub renders a repository.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Browse all repositories pushed via `isi push`
+- Navigate branches per repository
+- File tree with folder navigation
+- File viewer with line numbers
 
-```bash
-ng serve
-```
+## Setup
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+**Requirements:** Node.js 20+, pnpm
 
 ```bash
-ng generate component component-name
+git clone https://github.com/glrmrissi/isi_client_side
+cd isi_client_side
+pnpm install
+pnpm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Open `http://localhost:4200`. The app expects [`isi-object-storage`](https://github.com/glrmrissi/object_storage_isi) running at `http://localhost:3000`.
+
+## Usage
 
 ```bash
-ng generate --help
+# In any project with isi initialized:
+isi init
+isi add .
+isi commit -m "first commit"
+isi push   # repo name is auto-detected from the folder name
+
+# Open http://localhost:4200 to browse it
 ```
 
-## Building
+## Stack
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Angular 21** — standalone components, signals, built-in control flow (`@if`, `@for`)
+- **Tailwind CSS 4** — styling
